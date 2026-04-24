@@ -6,12 +6,20 @@ class ApiClient:
         self.base_url = base_url
 
     def search(self, search_term,media_type = "music", limit = 10):
-        try:
-            result = requests.get(self.base_url + "search", params={
+        return self._get_request_with_error_handling(self.base_url + "search", params={
             "term": search_term,
             "media": media_type,
             "limit": limit
             })
+    def lookup(self, media_id):
+        return self._get_request_with_error_handling(self.base_url + "lookup", params={
+            "id": media_id
+            })
+        
+
+    def _get_request_with_error_handling(self,request_body,params):
+        try:
+            result = requests.get(request_body, params = params)
             result.raise_for_status()
             return result
         except requests.exceptions.ConnectionError as e:
@@ -24,5 +32,3 @@ class ApiClient:
              raise Exception("Invalid URL") from e
         except requests.RequestException as e:
             raise Exception("An error occured") from e
-
-    
