@@ -12,6 +12,11 @@ def test_results_contain_expected_fields(client):
     # Assert
     assert all(field in result for result in data["results"] for field in EXPECTED_FIELDS), "Not all expected fields [{EXPECTED_FIELDS}] found in API response."
 
+def test_limit_param_caps_results(client):
+    result_limit = 5
+    response = client.search(search_term=VALID_SEARCH_TERM,limit=result_limit)
+    data = response.json()
+    assert len(data["results"]) <= result_limit
 
 
 # def test_media_param_filters_correctly(client):
