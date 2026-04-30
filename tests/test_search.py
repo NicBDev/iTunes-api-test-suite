@@ -18,6 +18,13 @@ def test_limit_param_caps_results(client):
     data = response.json()
     assert len(data["results"]) <= result_limit
 
+def test_media_param_filters_correctly(client):
+    response = client.search(search_term=VALID_SEARCH_TERM,media_type="music")
+    data = response.json()
+    assert all(result["kind"] == "song" for result in data["results"])
+
+
+
 
 # def test_media_param_filters_correctly(client):
 #     result = 
