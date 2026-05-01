@@ -27,15 +27,9 @@ def test_special_characters_handled(client):
     response = client.search(search_term=SPECIAL_CHAR_SEARCH_TERM)
     assert response.status_code == 200
 
-
-
-# def test_media_param_filters_correctly(client):
-#     result = 
-#     assert
-
-# def test_special_characters_handled(client):
-
-# def test_empty_search_term(client):
-#     result = client.search("")
-#     assert result
+def test_empty_search_term(client):
+    response = client.search("")
+    data = response.json()
+    assert data["resultCount"] == 0
+    assert data["results"] == []
     
