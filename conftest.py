@@ -9,6 +9,9 @@ VALID_ALBUM_ID = 1097861387
 
 EXPECTED_FIELDS = ["trackName", "artistName", "kind", "collectionName"]
 
+EXPECTED_LOOKUP_FIELDS = ["wrapperType", "kind", "artistId", "artistName", "trackId", "trackName"]
+
+
 @pytest.fixture
 def client():
     return ApiClient()

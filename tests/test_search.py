@@ -6,11 +6,9 @@ def test_valid_search_returns_200(client):
 
 
 def test_results_contain_expected_fields(client):
-    # Arrange + Act
     response = client.search(VALID_SEARCH_TERM)
     data = response.json()
-    # Assert
-    assert all(field in result for result in data["results"] for field in EXPECTED_FIELDS), "Not all expected fields [{EXPECTED_FIELDS}] found in API response."
+    assert all(field in result for result in data["results"] for field in EXPECTED_FIELDS), f"Not all expected fields {EXPECTED_FIELDS} found in API response."
 
 def test_limit_param_caps_results(client):
     result_limit = 5
