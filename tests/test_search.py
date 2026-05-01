@@ -1,8 +1,8 @@
-from conftest import VALID_SEARCH_TERM, VALID_ARTIST_ID, EXPECTED_FIELDS
+from conftest import VALID_SEARCH_TERM, VALID_ARTIST_ID, EXPECTED_FIELDS, SPECIAL_CHAR_SEARCH_TERM
 
 def test_valid_search_returns_200(client):
-    result = client.search(VALID_SEARCH_TERM)
-    assert result.status_code == 200
+    response = client.search(VALID_SEARCH_TERM)
+    assert response.status_code == 200
 
 
 def test_results_contain_expected_fields(client):
@@ -23,6 +23,9 @@ def test_media_param_filters_correctly(client):
     data = response.json()
     assert all(result["kind"] == "song" for result in data["results"])
 
+def test_special_characters_handled(client):
+    response = client.search(search_term=SPECIAL_CHAR_SEARCH_TERM)
+    assert response.status_code == 200
 
 
 

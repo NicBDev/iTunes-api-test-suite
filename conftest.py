@@ -2,6 +2,7 @@ import pytest
 from utils.api_client import ApiClient
 
 VALID_SEARCH_TERM = "Radiohead"
+SPECIAL_CHAR_SEARCH_TERM = "AC/DC Rós"
 VALID_ARTIST_ID = 657515
 VALID_TRACK_ID = 1097861834
 VALID_ALBUM_ID = 1097861387
