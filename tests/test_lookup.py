@@ -1,5 +1,5 @@
 
-from conftest import VALID_ARTIST_ID, VALID_TRACK_ID, INVALID_TRACK_ID, EXPECTED_LOOKUP_FIELDS
+from conftest import VALID_ARTIST_ID, VALID_TRACK_ID, INVALID_ID, EXPECTED_LOOKUP_FIELDS
 
 
 def test_valid_lookup_returns_correct_entity(client):
@@ -19,3 +19,4 @@ def test_invalid_id_returns_expected_response(client):
     data = response.json()
     assert data["resultCount"] == 0
     assert data["results"] == []
+
