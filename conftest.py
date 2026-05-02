@@ -11,6 +11,7 @@ EXPECTED_FIELDS = ["trackName", "artistName", "kind", "collectionName"]
 
 EXPECTED_LOOKUP_FIELDS = ["wrapperType", "kind", "artistId", "artistName", "trackId", "trackName"]
 
+INVALID_ID = 999999999999
 
 @pytest.fixture
 def client():
