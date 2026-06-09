@@ -14,6 +14,18 @@ EXPECTED_LOOKUP_FIELDS = ["wrapperType", "kind", "artistId", "artistName", "trac
 INVALID_ID = 999999999999
 INVALID_LONG_ID = 99999999999999999999
 
+# Media type search terms
+VALID_PODCAST_SEARCH_TERM = "Serial"
+VALID_AUDIOBOOK_SEARCH_TERM = "Harry Potter"
+
+# Media type lookup IDs
+VALID_MOVIE_ID = 1745007827  # Titanic: The Musical -- confirmed feature-movie
+
+# Edge case search terms
+NUMERIC_SEARCH_TERM = "1984"
+LONG_SEARCH_TERM = "a" * 200
+
+
 @pytest.fixture
 def client():
     return ApiClient()

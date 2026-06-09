@@ -21,6 +21,7 @@ def test_media_param_filters_correctly(client):
     data = response.json()
     assert all(result["kind"] == "song" for result in data["results"])
 
+
 def test_special_characters_handled(client):
     response = client.search(search_term=SPECIAL_CHAR_SEARCH_TERM)
     assert response.status_code == 200

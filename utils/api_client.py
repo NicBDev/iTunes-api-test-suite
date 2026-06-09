@@ -5,15 +5,17 @@ class ApiClient:
     def __init__(self, base_url="https://itunes.apple.com/"):
         self.base_url = base_url
 
-    def search(self, search_term,media_type = "music", limit = 10):
+    def search(self, search_term, country_code = "US", media_type = "music", limit = 10):
         return self._get_request_with_error_handling(self.base_url + "search", params={
             "term": search_term,
             "media": media_type,
-            "limit": limit
+            "limit": limit,
+            "country": country_code
             })
-    def lookup(self, media_id):
+    def lookup(self, media_id, country_code = "US"):
         return self._get_request_with_error_handling(self.base_url + "lookup", params={
-            "id": media_id
+            "id": media_id,
+            "country": country_code
             })
         
 
